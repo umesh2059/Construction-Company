@@ -1,4 +1,5 @@
 import {useState} from "react";
+import { Link } from "react-router-dom";
 import {Menu,X} from "lucide-react";
 
 const Navbar =()=>{
@@ -13,11 +14,11 @@ const Navbar =()=>{
 
 
                 <ul className="hidden md:flex gap-8 font-medium">
-                    <li className="cursor-pointer hover:text-orange-600">Home</li>
-                    <li className="cursor-pointer hover:text-orange-600">projects</li>
-                    <li className="cursor-pointer hover:text-orange-600">Events</li>
-                    <li className="cursor-pointer hover:text-orange-600">Careers</li>
-                    <li className=" cursor-pointer hover:text-orange-600">Contacts</li>
+                    <li className="cursor-pointer hover:text-orange-600"><Link to="/">Home</Link></li>
+                    <li className="cursor-pointer hover:text-orange-600"><Link to="/projects">Projects</Link></li>
+                    <li className="cursor-pointer hover:text-orange-600"><Link to="/events">Events</Link></li>
+                    <li className="cursor-pointer hover:text-orange-600"><Link to="/careers">Careers</Link></li>
+                    <li className=" cursor-pointer hover:text-orange-600"><Link to="/contact">Contacts</Link></li>
                 </ul> 
                     <button className="hidden md:block bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700">
                         Apply Now
@@ -32,11 +33,11 @@ const Navbar =()=>{
             {isOpen && (
                 <div className="md:hidden px-6 pb-4">
                     <ul className = "flex flex-col gap-4 font-medium">
-                        <li>Home</li>
-                        <li>Projects</li>
-                        <li>Events</li>
-                        <li>Careers</li>
-                        <li>Contact</li>
+                        <li><Link to = "/">Home</Link></li>
+                        <li><Link to = "/projects">Projects</Link></li>
+                       <li><Link to = "/events">Events</Link></li>
+                      <li><Link to="/careers">Careers</Link></li>
+                       <li><Link to = "/contact">Contact</Link></li>
                     </ul>
                     <button className="mt-4 w-full bg-orange-600 text-white py-2 rounded-lg">Apply Now</button>
                 </div>
