@@ -1,19 +1,24 @@
+import type { Project } from "@/types/project";
+
 const Projects = () => {
-  const projects = [
+  const projects: Project[] = [
     {
+      id: 1,
       title: "Smart City Development",
-      description:
-        "Modern infrastructure project with sustainable design.",
+      location: "Bangalore",
+      status: "Ongoing",
     },
     {
+      id: 2,
       title: "Highway Expansion",
-      description:
-        "Large-scale road construction connecting major cities.",
+      location: "Delhi",
+      status: "Completed",
     },
     {
+      id: 3,
       title: "Commercial Complex",
-      description:
-        "State-of-the-art office and retail space development.",
+      location: "Mumbai",
+      status: "Planning",
     },
   ];
 
@@ -49,7 +54,7 @@ const Projects = () => {
                 </h3>
 
                 <p className="text-gray-600 mt-3">
-                  {project.description}
+                  {project.location} - {project.status}
                 </p>
 
                 <button className="mt-4 text-orange-600 font-semibold">

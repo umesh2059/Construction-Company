@@ -7,6 +7,7 @@ import Events from "@/pages/Events";
 import Career from "@/pages/Career";
 import Internship from "@/pages/Internship";
 import Contact from "@/pages/Contact";
+import ProjectDetails from "@/pages/ProjectDetails";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
            <Route path = "/careers" element ={<Career/>}/>
            <Route path = "/internship" element ={<Internship/>}/>
            <Route path = "/contact" element = {<Contact/>}/>
+           <Route path = "/projects/:id" element = {<ProjectDetails/>}/>
          </Routes>
      </div>
   );

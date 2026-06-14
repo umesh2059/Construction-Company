@@ -1,11 +1,11 @@
 import { useState } from "react";
-import Navbar from "@/components/Navbar";
 import ProjectCard from "@/components/projectCard";
+import type { Project } from "@/types/project";
 
 const Projects = () => {
   const [search, setSearch] = useState("");
 
-  const projects = [
+  const projects: Project[] = [
     {
       id: 1,
       title: "Smart City Project",
@@ -64,12 +64,7 @@ const Projects = () => {
         {/* Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-10">
           {filteredProjects.map((project) => (
-            <ProjectCard
-              key={project.id}
-              title={project.title}
-              location={project.location}
-              status={project.status}
-            />
+            <ProjectCard key={project.id} project={project} />
           ))}
         </div>
 
