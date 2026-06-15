@@ -1,7 +1,7 @@
 import type { Project } from "@/types/project";
 
 const Projects = () => {
-  const projects: Project[] = [
+  const projects:Project[] = [
     {
       id: 1,
       title: "Smart City Development",
