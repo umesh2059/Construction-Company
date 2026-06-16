@@ -14,11 +14,11 @@ const Careers = () => {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
 
       <section className="max-w-7xl mx-auto px-6 py-12">
         <h1 className="text-5xl font-bold">
-          Career Opportunities
+          Career Opportunitiesw
         </h1>
 
         <p className="text-gray-600 mt-4">
