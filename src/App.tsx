@@ -9,6 +9,7 @@ import Internship from "@/pages/Internship";
 import Contact from "@/pages/Contact";
 import ProjectDetails from "@/pages/ProjectDetails";
 import CareerDetails from "@/pages/careerDetails";
+import Apply from "@/pages/Apply";
 
 
 
@@ -25,6 +26,7 @@ const App = () => {
            <Route path = "/contact" element = {<Contact/>}/>
            <Route path = "/projects/:id" element = {<ProjectDetails/>}/>
            <Route path =  "/careers/:id" element = {<CareerDetails/>}/>
+           <Route path = "/apply/:id"  element ={<Apply/>}/>
          </Routes>
      </div>
   );
