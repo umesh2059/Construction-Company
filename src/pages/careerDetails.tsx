@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { careers } from "@/data/careers";
-import { Link} from "react-router-dom"
+import { Link} from "react-router-dom";
 
 const CareerDetails = () => {
   const { id } = useParams();
