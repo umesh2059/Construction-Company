@@ -1,4 +1,22 @@
+
+import { useEffect} from "react";
+import {supabase} from "@/lib/supabase";
+
 const  Dashboard = ()=>{
+
+    const testConnection= async()=>{
+        const {data, error} = await supabase
+            .from("careers")
+            .select("*");
+
+
+        console.log("Data:", data);
+        console.log("Error:",error);
+    };
+
+    useEffect(()=>{
+        testConnection();
+    },[]);
     return (
         <div className="p-8">
             <h1 className="text-4xl font-bold">
