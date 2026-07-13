@@ -1,5 +1,6 @@
-
+﻿
 import { useEffect} from "react";
+import { Link } from "react-router-dom";
 import {supabase} from "@/lib/supabase";
 
 const  Dashboard = ()=>{
@@ -22,6 +23,7 @@ const  Dashboard = ()=>{
             <h1 className="text-4xl font-bold">
                 Admin Dashboard
             </h1>
+            <Link to="/admin/events" className="mt-5 inline-block rounded-xl bg-slate-950 px-5 py-3 font-bold text-white hover:bg-amber-600">Add event</Link>
 
             <div className="grid md:grid-cols-3 gap-6 mt-10">
                 <div className="bg-white shadow-lg rounded-xl p-6">

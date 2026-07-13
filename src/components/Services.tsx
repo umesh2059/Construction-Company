@@ -1,4 +1,4 @@
-import {
+﻿import {
   Briefcase,
   Building2,
   GraduationCap,
@@ -34,39 +34,39 @@ const Services = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-100">
+    <section className="bg-slate-950 py-24 text-white">
       <div className="max-w-7xl mx-auto px-6">
 
         <div className="text-center">
-          <p className="text-orange-600 font-semibold">
+          <p className="font-mono text-xs font-semibold uppercase tracking-[.2em] text-amber-400">
             Our Services
           </p>
 
-          <h2 className="text-4xl font-bold mt-2">
+          <h2 className="font-display mt-3 text-4xl font-bold tracking-tight md:text-5xl">
             Everything In One Platform
           </h2>
 
-          <p className="mt-4 text-gray-600">
+          <p className="mt-4 leading-7 text-slate-400">
             Connecting students, professionals, and companies.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+        <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
 
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl p-6 shadow-lg hover:-translate-y-2 transition duration-300"
+              className="rounded-2xl border border-white/10 bg-white/5 p-7 transition duration-300 hover:-translate-y-2 hover:border-amber-400/50 hover:bg-white/10"
             >
-              <div className="text-orange-600 mb-4">
+              <div className="mb-5 text-amber-400">
                 {service.icon}
               </div>
 
-              <h3 className="text-xl font-semibold mb-3">
+              <h3 className="font-display mb-3 text-xl font-bold">
                 {service.title}
               </h3>
 
-              <p className="text-gray-600">
+              <p className="leading-7 text-slate-400">
                 {service.description}
               </p>
             </div>

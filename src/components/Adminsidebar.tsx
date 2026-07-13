@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+﻿import { Link } from "react-router-dom";
 
 
 const Adminsidebar = ()=>{
@@ -30,9 +30,13 @@ const Adminsidebar = ()=>{
                    className="block">
                     Application
                    </Link>
+                  <Link to="/admin/events" className="block">
+                    Events
+                  </Link>
             </nav>
         </div>
     )
 }
 
 export default Adminsidebar;
+

@@ -11,6 +11,8 @@ import ProjectDetails from "@/pages/ProjectDetails";
 import CareerDetails from "@/pages/careerDetails";
 import Apply from "@/pages/Apply";
 import Dashboard from "@/Admin/Dashboard";
+import CreateEvent from "@/Admin/CreateEvent";
+import EventRegistration from "@/pages/EventRegistration";
 
 
 
@@ -22,6 +24,7 @@ const App = () => {
            <Route path = "/" element ={<Home/>}/>
            <Route path = "/projects" element ={<Projects/>}/>
            <Route path = "/events" element ={<Events/>}/>
+           <Route path = "/events/:id/register" element ={<EventRegistration/>}/>
            <Route path = "/careers" element ={<Career/>}/>
            <Route path = "/internship" element ={<Internship/>}/>
            <Route path = "/contact" element = {<Contact/>}/>
@@ -29,6 +32,7 @@ const App = () => {
            <Route path =  "/careers/:id" element = {<CareerDetails/>}/>
            <Route path = "/apply/:id"  element ={<Apply/>}/>
            <Route path = "/admin" element ={<Dashboard/>}/>
+           <Route path = "/admin/events" element ={<CreateEvent/>}/>
          </Routes>
      </div>
   );
