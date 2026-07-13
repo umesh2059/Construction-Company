@@ -12,6 +12,7 @@ import CareerDetails from "@/pages/careerDetails";
 import Apply from "@/pages/Apply";
 import Dashboard from "@/Admin/Dashboard";
 import CreateEvent from "@/Admin/CreateEvent";
+import CreateCareer from "@/Admin/CreateCareer";
 import EventRegistration from "@/pages/EventRegistration";
 
 
@@ -33,6 +34,7 @@ const App = () => {
            <Route path = "/apply/:id"  element ={<Apply/>}/>
            <Route path = "/admin" element ={<Dashboard/>}/>
            <Route path = "/admin/events" element ={<CreateEvent/>}/>
+           <Route path = "/admin/careers" element ={<CreateCareer/>}/>
          </Routes>
      </div>
   );

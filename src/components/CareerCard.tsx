@@ -21,7 +21,7 @@ const CareerCard = ({ career }: CareerCardProps) => {
       </p>
 
       <span className="inline-block mt-3 bg-orange-100 text-orange-600 px-3 py-1 rounded-full">
-        {career.type}
+        {career.job_type}
       </span>
 
       <Link

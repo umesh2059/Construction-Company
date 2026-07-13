@@ -11,7 +11,9 @@ create table if not exists public.events (
 );
 alter table public.events enable row level security;
 create policy "Anyone can view events" on public.events for select using (true);
-create policy "Authenticated users can manage events" on public.events for all to authenticated using (true) with check (true);
+create policy "Anyone can insert events" on public.events for insert with check (true);
+create policy "Authenticated users can manage events" on public.events for update using (true) with check (true);
+create policy "Authenticated users can delete events" on public.events for delete using (true);
 
 -- Stores public attendee registrations. Run this section in the same SQL editor.
 create table if not exists public.event_registrations (
