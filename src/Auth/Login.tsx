@@ -1,12 +1,25 @@
+import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
-import { LogIn } from "lucide-react";
+import { LogIn, Mail, Lock, AlertCircle } from "lucide-react";
 
 export default function Login() {
-  const { user, loading, signInWithGoogle } = useAuth();
+  const { user, loading, error, signInWithGoogle, signInWithEmail, signUpWithEmail, clearError } = useAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isSignUp, setIsSignUp] = useState(false);
 
   if (loading) return null;
   if (user) return <Navigate to="/admin" replace />;
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isSignUp) {
+      await signUpWithEmail(email, password);
+    } else {
+      await signInWithEmail(email, password);
+    }
+  };
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-stone-50 px-6">
@@ -15,10 +28,65 @@ export default function Login() {
           <LogIn size={32} />
         </div>
         <h1 className="mt-5 font-display text-2xl font-bold text-slate-950">Admin Login</h1>
-        <p className="mt-2 text-sm text-slate-600">Sign in with your Google account to manage the portal.</p>
+        <p className="mt-2 text-sm text-slate-600">
+          {isSignUp ? "Create an account to manage the portal." : "Sign in to manage the portal."}
+        </p>
+
+        {error && (
+          <div className="mt-4 flex items-center gap-2 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700 text-left">
+            <AlertCircle size={16} className="shrink-0" />
+            <span>{error}</span>
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit} className="mt-6 space-y-4 text-left">
+          <div>
+            <label htmlFor="email" className="text-sm font-semibold text-slate-700">Email</label>
+            <div className="relative mt-1">
+              <Mail size={16} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+              <input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => { setEmail(e.target.value); clearError(); }}
+                placeholder="admin@example.com"
+                className="w-full rounded-xl border border-slate-300 bg-white py-3 pl-10 pr-4 text-sm text-slate-900 outline-none transition focus:border-slate-500"
+                required
+              />
+            </div>
+          </div>
+          <div>
+            <label htmlFor="password" className="text-sm font-semibold text-slate-700">Password</label>
+            <div className="relative mt-1">
+              <Lock size={16} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+              <input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => { setPassword(e.target.value); clearError(); }}
+                placeholder="••••••••"
+                className="w-full rounded-xl border border-slate-300 bg-white py-3 pl-10 pr-4 text-sm text-slate-900 outline-none transition focus:border-slate-500"
+                required
+              />
+            </div>
+          </div>
+          <button
+            type="submit"
+            className="w-full rounded-xl bg-slate-950 px-5 py-3 font-bold text-white transition hover:bg-slate-800"
+          >
+            {isSignUp ? "Create Account" : "Sign In"}
+          </button>
+        </form>
+
+        <div className="mt-4 flex items-center gap-3">
+          <div className="h-px flex-1 bg-slate-200" />
+          <span className="text-xs font-semibold text-slate-400">OR</span>
+          <div className="h-px flex-1 bg-slate-200" />
+        </div>
+
         <button
           onClick={signInWithGoogle}
-          className="mt-8 flex w-full items-center justify-center gap-3 rounded-xl border border-slate-300 bg-white px-5 py-3 font-bold text-slate-700 transition hover:bg-slate-50"
+          className="mt-4 flex w-full items-center justify-center gap-3 rounded-xl border border-slate-300 bg-white px-5 py-3 font-bold text-slate-700 transition hover:bg-slate-50"
         >
           <svg className="h-5 w-5" viewBox="0 0 24 24">
             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" />
@@ -28,6 +96,16 @@ export default function Login() {
           </svg>
           Sign in with Google
         </button>
+
+        <p className="mt-6 text-xs text-slate-500">
+          {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
+          <button
+            onClick={() => { setIsSignUp(!isSignUp); clearError(); }}
+            className="font-semibold text-slate-700 underline underline-offset-2 hover:text-slate-900"
+          >
+            {isSignUp ? "Sign in" : "Sign up"}
+          </button>
+        </p>
       </div>
     </main>
   );
