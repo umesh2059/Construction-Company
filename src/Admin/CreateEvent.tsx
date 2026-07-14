@@ -13,8 +13,10 @@ const CreateEvent = () => {
   const update = (field: keyof EventForm, value: string) => setForm((current) => ({ ...current, [field]: value }));
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); setSaving(true); setStatus("");
+    console.log({ title: form.title.trim(), description: form.description.trim() || null, event_date: form.event_date, event_time: form.event_time || null, location: form.location.trim() || null, image_url: form.image_url.trim() || null })
     const { error } = await supabase.from("events").insert({ title: form.title.trim(), description: form.description.trim() || null, event_date: form.event_date, event_time: form.event_time || null, location: form.location.trim() || null, image_url: form.image_url.trim() || null });
     setSaving(false);
+    console.log({error})
     if (error) { setStatus("Could not publish the event. Check the Supabase events table and admin access."); return; }
     setForm(initialForm); setStatus("Event published. It is now visible on the Events page.");
   };
