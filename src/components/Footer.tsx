@@ -12,7 +12,7 @@ const Footer = () => {
             <div className="flex items-center gap-2">
               <Building2 size={28} />
               <h2 className="text-2xl font-bold">
-                ConstructHub
+                Susta construction & Enginnering
               </h2>
             </div>
 
@@ -74,7 +74,7 @@ const Footer = () => {
 
               <div className="flex items-center gap-2">
                 <Phone size={18} />
-                <span>+91 9876543210</span>
+                <span>+977 9841529018 </span>
               </div>
 
               <div className="flex items-center gap-2">

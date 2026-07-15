@@ -15,6 +15,8 @@ import EventRegistration from "@/pages/EventRegistration";
 import Dashboard from "@/Admin/Dashboard";
 import CreateEvent from "@/Admin/CreateEvent";
 import CreateCareer from "@/Admin/CreateCareer";
+import CreateProject from "@/Admin/CreateProject";
+import ManageImages from "@/Admin/ManageImages";
 import Login from "@/Auth/Login";
 import ProtectedRoute from "@/Auth/protectedRoute";
 import AdminLayout from "@/Admin/AdminLayout";
@@ -46,6 +48,8 @@ const App = () => {
           <Route index element={<Dashboard />} />
           <Route path="events" element={<CreateEvent />} />
           <Route path="careers" element={<CreateCareer />} />
+          <Route path="projects" element={<CreateProject />} />
+          <Route path="images" element={<ManageImages />} />
         </Route>
       </Routes>
     </AuthProvider>

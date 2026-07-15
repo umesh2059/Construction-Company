@@ -1,24 +1,35 @@
-﻿import type { Project } from "@/types/project";
+﻿import type { project as Project } from "@/types/project";
+
+const PROJECT_IMAGES: Record<string, string> = {
+  "Smart City Development": "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80",
+  "Highway Expansion": "https://images.unsplash.com/photo-1541888946425-d81bb68c7b4f?w=800&q=80",
+  "Commercial Complex": "https://images.unsplash.com/photo-1574484284002-952d92456975?w=800&q=80",
+};
+
+const FALLBACK_IMG = "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80";
 
 const Projects = () => {
-  const projects:Project[] = [
+  const projects: Project[] = [
     {
       id: 1,
       title: "Smart City Development",
       location: "Bangalore",
       status: "Ongoing",
+      image: PROJECT_IMAGES["Smart City Development"],
     },
     {
       id: 2,
       title: "Highway Expansion",
       location: "Delhi",
       status: "Completed",
+      image: PROJECT_IMAGES["Highway Expansion"],
     },
     {
       id: 3,
       title: "Commercial Complex",
       location: "Mumbai",
       status: "Planning",
+      image: PROJECT_IMAGES["Commercial Complex"],
     },
   ];
 
@@ -46,7 +57,13 @@ const Projects = () => {
               key={index}
               className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
-              <div className="h-48 bg-gradient-to-br from-slate-800 via-slate-700 to-amber-700"></div>
+              <div className="h-48 overflow-hidden">
+                <img
+                  src={project.image || FALLBACK_IMG}
+                  alt={project.title}
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
+                />
+              </div>
 
               <div className="p-7">
                 <h3 className="font-display text-xl font-bold">
@@ -58,7 +75,7 @@ const Projects = () => {
                 </p>
 
                 <button className="mt-5 text-sm font-bold text-amber-700">
-                  Learn More â†’
+                  Learn More →
                 </button>
               </div>
             </div>

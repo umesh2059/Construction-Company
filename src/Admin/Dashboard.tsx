@@ -24,7 +24,9 @@ const  Dashboard = ()=>{
                 Admin Dashboard
             </h1>
             <Link to="/admin/events" className="mr-4 inline-block rounded-xl bg-slate-950 px-5 py-3 font-bold text-white hover:bg-amber-600">Add event</Link>
-            <Link to="/admin/careers" className="inline-block rounded-xl bg-slate-950 px-5 py-3 font-bold text-white hover:bg-amber-600">Add job</Link>
+            <Link to="/admin/careers" className="mr-4 inline-block rounded-xl bg-slate-950 px-5 py-3 font-bold text-white hover:bg-amber-600">Add job</Link>
+            <Link to="/admin/projects" className="mr-4 inline-block rounded-xl bg-slate-950 px-5 py-3 font-bold text-white hover:bg-amber-600">Add project</Link>
+            <Link to="/admin/images" className="inline-block rounded-xl bg-amber-600 px-5 py-3 font-bold text-white hover:bg-amber-700">Manage Images</Link>
 
             <div className="grid md:grid-cols-3 gap-6 mt-10">
                 <div className="bg-white shadow-lg rounded-xl p-6">

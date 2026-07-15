@@ -10,7 +10,7 @@ const Navbar =()=>{
             <div className = "max-w-7xl mx-auto flex items-center justify-between px-6 py-4" >
                 <Link to="/" className="group flex items-center gap-3">
                     <span className="grid h-10 w-10 place-items-center rounded-xl bg-slate-950 text-amber-400 transition-transform group-hover:-rotate-6"><Building2 size={21}/></span>
-                    <span className="font-display text-lg font-bold tracking-tight text-slate-950">Susta Construction & Enginnering<span className="text-amber-600">Hub</span></span>
+                    <span className="font-display text-lg font-bold tracking-tight text-slate-950">Susta Construction & Enginnering<span className="text-amber-600"></span></span>
                 </Link>
 
                 <ul className="hidden gap-7 text-sm font-bold text-slate-600 md:flex">

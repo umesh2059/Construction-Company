@@ -1,11 +1,35 @@
-﻿import { ArrowRight, Building2, HardHat, MapPin } from "lucide-react";
+﻿import { useState, useEffect } from "react";
+import { ArrowRight, Building2, HardHat, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
+import { supabase } from "@/lib/supabase";
 
-const Hero = ()=>{
-    return(
-        <section className="relative isolate overflow-hidden bg-slate-950 text-white">
-          <div className="grid-pattern absolute inset-0 opacity-70"></div>
-          <div className="absolute -right-32 top-0 h-96 w-96 rounded-full bg-amber-500/20 blur-3xl"></div>
+const HERO_DEFAULT = "https://images.unsplash.com/photo-1541888946425-d81bb68c7b4f?w=1600&q=80";
+
+const Hero = () => {
+  const [heroImage, setHeroImage] = useState(HERO_DEFAULT);
+
+  useEffect(() => {
+    supabase
+      .from("site_images")
+      .select("image_url")
+      .eq("section", "hero_bg")
+      .single()
+      .then(({ data }) => {
+        if (data?.image_url) setHeroImage(data.image_url);
+      });
+  }, []);
+
+  return (
+    <section className="relative isolate overflow-hidden bg-slate-950 text-white">
+      <div className="absolute inset-0">
+        <img
+          src={heroImage}
+          alt="Road construction site"
+          className="h-full w-full object-cover opacity-30"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/70 to-transparent"></div>
+      </div>
+      <div className="absolute -right-32 top-0 h-96 w-96 rounded-full bg-amber-500/20 blur-3xl"></div>
           <div className="relative mx-auto max-w-7xl px-6 py-24 md:py-32">
             <div className="grid items-end gap-14 lg:grid-cols-[1.35fr_.65fr]">
               <div className="max-w-4xl">

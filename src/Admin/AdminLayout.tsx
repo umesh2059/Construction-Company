@@ -1,11 +1,13 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
-import { LayoutDashboard, CalendarPlus, Briefcase, LogOut, Building2 } from "lucide-react";
+import { LayoutDashboard, CalendarPlus, Briefcase, LogOut, Building2, Image } from "lucide-react";
 
 const navItems = [
   { to: "/admin", label: "Dashboard", icon: LayoutDashboard, end: true },
   { to: "/admin/events", label: "Events", icon: CalendarPlus, end: false },
   { to: "/admin/careers", label: "Jobs", icon: Briefcase, end: false },
+  { to: "/admin/projects", label: "Projects", icon: Building2, end: false },
+  { to: "/admin/images", label: "Images", icon: Image, end: false },
 ];
 
 export default function AdminLayout() {

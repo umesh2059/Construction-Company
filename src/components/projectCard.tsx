@@ -1,15 +1,36 @@
-import type { Project } from "@/types/project";
-import {Link} from "react-router-dom";
+import { useState } from "react";
+import type { project as Project } from "@/types/project";
+import { Link } from "react-router-dom";
+
 type ProjectCardProps = {
   project: Project;
 };
 
+const FALLBACK_IMG = "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80";
+
 const ProjectCard = ({ project }: ProjectCardProps) => {
+  const [imgError, setImgError] = useState(false);
+
   return (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:scale-105 transition duration-300">
       
       {/* Project Image */}
-      <div className="h-48 bg-gray-300"></div>
+      <div className="h-48 bg-gray-300 overflow-hidden">
+        {project.image && !imgError ? (
+          <img
+            src={project.image}
+            alt={project.title}
+            className="h-full w-full object-cover"
+            onError={() => setImgError(true)}
+          />
+        ) : (
+          <img
+            src={FALLBACK_IMG}
+            alt="Construction site"
+            className="h-full w-full object-cover"
+          />
+        )}
+      </div>
 
       <div className="p-5">
         <h2 className="text-xl font-bold">
