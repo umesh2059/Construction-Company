@@ -2,7 +2,7 @@
 
 const PROJECT_IMAGES: Record<string, string> = {
   "Smart City Development": "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80",
-  "Highway Expansion": "https://images.unsplash.com/photo-1541888946425-d81bb68c7b4f?w=800&q=80",
+  "Highway Expansion": "https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   "Commercial Complex": "https://images.unsplash.com/photo-1574484284002-952d92456975?w=800&q=80",
 };
 
@@ -13,21 +13,21 @@ const Projects = () => {
     {
       id: 1,
       title: "Smart City Development",
-      location: "Bangalore",
+      location: "Triveni",
       status: "Ongoing",
       image: PROJECT_IMAGES["Smart City Development"],
     },
     {
       id: 2,
       title: "Highway Expansion",
-      location: "Delhi",
+      location: "Susta",
       status: "Completed",
       image: PROJECT_IMAGES["Highway Expansion"],
     },
     {
       id: 3,
       title: "Commercial Complex",
-      location: "Mumbai",
+      location: "Belatari",
       status: "Planning",
       image: PROJECT_IMAGES["Commercial Complex"],
     },

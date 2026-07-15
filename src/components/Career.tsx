@@ -19,18 +19,18 @@ const Careers = () => {
 
   const jobs = [
     {
-      title: "Frontend Developer Intern",
+      title: "Civil Enginner",
       location: "Remote",
       type: "Internship",
     },
     {
       title: "Site Engineer",
-      location: "Bangalore",
+      location: "Triveni",
       type: "Full Time",
     },
     {
       title: "Project Coordinator",
-      location: "Mumbai",
+      location: "Narsahi",
       type: "Full Time",
     },
   ];
