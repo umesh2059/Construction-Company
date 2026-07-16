@@ -34,6 +34,7 @@ const Apply = () => {
       applicant_name: form.fullName.trim(), email: form.email.trim(), phone: form.phone.trim(), location: form.location.trim(), experience: form.experience,
       resume_url: form.resumeUrl.trim(), portfolio_url: form.profileUrl.trim() || null, cover_letter: form.message.trim() || null,
     });
+    if (error) console.error("Submit error:", error);
     setStatus(error ? "error" : "success");
   };
 

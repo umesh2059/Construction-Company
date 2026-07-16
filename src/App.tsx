@@ -17,6 +17,7 @@ import CreateEvent from "@/Admin/CreateEvent";
 import CreateCareer from "@/Admin/CreateCareer";
 import CreateProject from "@/Admin/CreateProject";
 import ManageImages from "@/Admin/ManageImages";
+import Applications from "@/Admin/Application";
 import Login from "@/Auth/Login";
 import ProtectedRoute from "@/Auth/protectedRoute";
 import AdminLayout from "@/Admin/AdminLayout";
@@ -50,6 +51,7 @@ const App = () => {
           <Route path="careers" element={<CreateCareer />} />
           <Route path="projects" element={<CreateProject />} />
           <Route path="images" element={<ManageImages />} />
+          <Route path="applications" element={<Applications />} />
         </Route>
       </Routes>
     </AuthProvider>
