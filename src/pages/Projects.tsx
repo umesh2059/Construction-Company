@@ -1,79 +1,69 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProjectCard from "@/components/projectCard";
+import { supabase } from "@/lib/supabase";
 import type { project as Project } from "@/types/project";
 
 const Projects = () => {
   const [search, setSearch] = useState("");
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const projects: Project[] = [
-    {
-      id: 1,
-      title: "Smart City Project",
-      location: "Bangalore",
-      status: "Ongoing",
-      image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80",
-    },
-    {
-      id: 2,
-      title: "Commercial Tower",
-      location: "Mumbai",
-      status: "Completed",
-      image: "https://images.unsplash.com/photo-1574484284002-952d92456975?w=800&q=80",
-    },
-    {
-      id: 3,
-      title: "Highway Expansion",
-      location: "Delhi",
-      status: "Ongoing",
-      image: "https://images.unsplash.com/photo-1541888946425-d81bb68c7b4f?w=800&q=80",
-    },
-    {
-      id: 4,
-      title: "Metro Bridge",
-      location: "Hyderabad",
-      status: "Planning",
-      image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80",
-    },
-  ];
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const { data, error } = await supabase
+        .from("projects")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        console.error("Error fetching projects:", error);
+      } else {
+        setProjects(data || []);
+      }
+
+      setLoading(false);
+    };
+
+    fetchProjects();
+  }, []);
 
   const filteredProjects = projects.filter((project) =>
-    project.title
-      .toLowerCase()
-      .includes(search.toLowerCase())
+    project.title.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
-    <>
-      {/* <Navbar /> */}
+    <section className="mx-auto max-w-7xl px-6 py-12">
+      <h1 className="text-5xl font-bold">
+        Construction Projects
+      </h1>
 
-      <section className="max-w-7xl mx-auto px-6 py-12">
+      <p className="mt-4 text-gray-600">
+        Discover ongoing and completed projects.
+      </p>
 
-        <h1 className="text-5xl font-bold">
-          Construction Projects
-        </h1>
+      <input
+        type="text"
+        placeholder="Search project..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        className="mt-8 w-full rounded-lg border p-3"
+      />
 
-        <p className="text-gray-600 mt-4">
-          Discover ongoing and completed projects.
+      {loading ? (
+        <p className="mt-10 text-gray-600">
+          Loading projects...
         </p>
-
-        {/* Search */}
-        <input
-          type="text"
-          placeholder="Search project..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="w-full mt-8 p-3 border rounded-lg"
-        />
-
-        {/* Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-10">
+      ) : (
+        <div className="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {filteredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+            <ProjectCard
+              key={project.id}
+              project={project}
+            />
           ))}
         </div>
-
-      </section>
-    </>
+      )}
+    </section>
   );
 };
 

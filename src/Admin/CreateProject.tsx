@@ -61,7 +61,8 @@ const CreateProject = () => {
 
     setSaving(false);
     if (error) {
-      setStatus("Could not publish the project. Check the Supabase projects table and admin access.");
+      console.error("PROJECT INSERT ERROR:",error);
+      setStatus(error.message);
       return;
     }
     setForm(initialForm);

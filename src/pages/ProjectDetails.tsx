@@ -1,64 +1,96 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
-import { projects } from "@/data/Projects";
+import { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
+import { supabase } from "@/lib/supabase";
 
-const FALLBACK = "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=1200&q=80";
+type Project = {
+  id: string;
+  title: string;
+  location: string;
+  status: string;
+  description: string | null;
+  image: string | null;
+};
 
 const ProjectDetails = () => {
   const { id } = useParams();
-  const [imgError, setImgError] = useState(false);
+  const [project, setProject] = useState<Project | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  const project = projects.find(
-    (p) => p.id === Number(id)
-  );
+  useEffect(() => {
+    const fetchProject = async () => {
+      if (!id) return;
+
+      const { data, error } = await supabase
+        .from("projects")
+        .select("*")
+        .eq("id", id)
+        .single();
+
+      if (error) {
+        console.error("Project error:", error);
+      } else {
+        setProject(data);
+      }
+
+      setLoading(false);
+    };
+
+    fetchProject();
+  }, [id]);
+
+  if (loading) {
+    return <p className="p-10">Loading project...</p>;
+  }
 
   if (!project) {
-    return (
-      <div className="p-10">
-        <h1 className="text-3xl font-bold">
-          Project Not Found
-        </h1>
-      </div>
-    );
+    return <h1 className="p-10 text-4xl font-bold">Project Not Found</h1>;
   }
 
   return (
-    <section className="max-w-5xl mx-auto px-6 py-12">
+    <main className="min-h-screen bg-stone-50 px-6 py-12">
+      <section className="mx-auto max-w-5xl">
+        <Link
+          to="/projects"
+          className="mb-8 inline-flex items-center gap-2 text-sm font-bold text-slate-600"
+        >
+          <ArrowLeft size={16} />
+          Back to Projects
+        </Link>
 
-      <div className="h-72 rounded-xl overflow-hidden">
-        <img
-          src={!imgError && project.image ? project.image : FALLBACK}
-          alt={project.title}
-          className="h-full w-full object-cover"
-          onError={() => setImgError(true)}
-        />
-      </div>
+        {project.image && (
+          <img
+            src={project.image}
+            alt={project.title}
+            className="h-[450px] w-full rounded-2xl object-cover"
+          />
+        )}
 
-      <h1 className="text-5xl font-bold mt-8">
-        {project.title}
-      </h1>
+        <div className="mt-8">
+          <span className="rounded-full bg-amber-100 px-4 py-2 text-sm font-bold text-amber-700">
+            {project.status}
+          </span>
 
-      <p className="text-gray-600 mt-4 text-lg">
-        📍 {project.location}
-      </p>
+          <h1 className="mt-5 text-5xl font-bold text-slate-950">
+            {project.title}
+          </h1>
 
-      <span className="inline-block mt-4 bg-orange-100 text-orange-600 px-4 py-2 rounded-full">
-        {project.status}
-      </span>
+          <p className="mt-4 text-lg text-slate-600">
+            📍 {project.location}
+          </p>
 
-      <div className="mt-8">
-        <h2 className="text-2xl font-semibold">
-          Project Description
-        </h2>
+          <div className="mt-8">
+            <h2 className="text-2xl font-bold text-slate-950">
+              About This Project
+            </h2>
 
-        <p className="text-gray-600 mt-4">
-          This project focuses on modern construction,
-          infrastructure development, and sustainable
-          engineering practices.
-        </p>
-      </div>
-
-    </section>
+            <p className="mt-4 text-lg leading-8 text-slate-600">
+              {project.description || "No description available."}
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 };
 
