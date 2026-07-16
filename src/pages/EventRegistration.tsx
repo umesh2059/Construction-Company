@@ -9,6 +9,7 @@ const emptyForm: RegistrationForm = { name: "", email: "", phone: "", company: "
 const formatDate = (date: string) => new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "long", year: "numeric" }).format(new Date(`${date}T00:00:00`));
 
 const EventRegistration = () => {
+  
   const { id } = useParams();
   const [event, setEvent] = useState<EventInfo | null>(null);
   const [form, setForm] = useState<RegistrationForm>(emptyForm);
@@ -22,7 +23,7 @@ const EventRegistration = () => {
       setEvent(data as EventInfo | null);
       setLoading(false);
     };
-    void loadEvent();
+    loadEvent().catch(() => setLoading(false));
   }, [id]);
 
   const update = (field: keyof RegistrationForm, value: string) => setForm((current) => ({ ...current, [field]: value }));
@@ -32,7 +33,7 @@ const EventRegistration = () => {
     setSaving(true); setStatus("");
     const { error } = await supabase.from("event_registrations").insert({ event_id: id, attendee_name: form.name.trim(), email: form.email.trim(), phone: form.phone.trim() || null, company: form.company.trim() || null, notes: form.notes.trim() || null });
     setSaving(false);
-    if (error) { setStatus("We could not save your registration. Please try again shortly."); return; }
+    if (error) { console.error("Registration error:", error); setStatus("We could not save your registration. Please try again shortly."); return; }
     setForm(emptyForm); setStatus("You’re registered! We’ll contact you with the event details.");
   };
 
