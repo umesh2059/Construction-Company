@@ -22,16 +22,19 @@ const Careers = () => {
       title: "Civil Enginner",
       location: "Remote",
       type: "Internship",
+      image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&q=80",
     },
     {
       title: "Site Engineer",
       location: "Triveni",
       type: "Full Time",
+      image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&q=80",
     },
     {
       title: "Project Coordinator",
       location: "Narsahi",
       type: "Full Time",
+      image: "https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?q=80&w=1097&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
   ];
 
@@ -66,23 +69,32 @@ const Careers = () => {
             {jobs.map((job, index) => (
               <div
                 key={index}
-                className="rounded-2xl border border-amber-200 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+                className="rounded-2xl border border-amber-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
-                <span className="rounded-full bg-amber-100 px-3 py-1 font-mono text-xs font-medium text-amber-800">
-                  {job.type}
-                </span>
+                <div className="h-40 overflow-hidden rounded-t-2xl bg-gray-200">
+                  <img
+                    src={job.image}
+                    alt={job.title}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="p-7">
+                  <span className="rounded-full bg-amber-100 px-3 py-1 font-mono text-xs font-medium text-amber-800">
+                    {job.type}
+                  </span>
 
-                <h3 className="font-display mt-5 text-xl font-bold">
-                  {job.title}
-                </h3>
+                  <h3 className="font-display mt-5 text-xl font-bold">
+                    {job.title}
+                  </h3>
 
-                <p className="mt-2 text-slate-600">
-                  📍 {job.location}
-                </p>
+                  <p className="mt-2 text-slate-600">
+                    📍 {job.location}
+                  </p>
 
-                <button className="mt-5 rounded-full bg-slate-950 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-amber-600">
-                  Apply Now
-                </button>
+                  <button className="mt-5 rounded-full bg-slate-950 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-amber-600">
+                    Apply Now
+                  </button>
+                </div>
               </div>
             ))}
           </div>

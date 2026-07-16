@@ -33,7 +33,7 @@ const Hero = () => {
           <div className="relative mx-auto max-w-7xl px-6 py-24 md:py-32">
             <div className="grid items-end gap-14 lg:grid-cols-[1.35fr_.65fr]">
               <div className="max-w-4xl">
-                <p className="mb-6 flex items-center gap-2 text-xs font-bold uppercase tracking-[.22em] text-amber-400"><span className="h-2 w-2 rounded-full bg-amber-400"></span> India’s built-environment network</p>
+                <p className="mb-6 flex items-center gap-2 text-xs font-bold uppercase tracking-[.22em] text-amber-400"><span className="h-2 w-2 rounded-full bg-amber-400"></span> Nepal’s built-environment network</p>
                 <h1 className="font-display text-5xl font-bold leading-[.98] tracking-tight md:text-7xl lg:text-8xl">Building what’s <span className="text-amber-400">next.</span></h1>
                 <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300">A smarter place to discover landmark projects, build your construction career, and meet the people shaping tomorrow’s cities.</p>
                 <div className="mt-9 flex flex-wrap gap-3">
@@ -53,7 +53,7 @@ const Hero = () => {
                     <div className="relative flex justify-between text-xs font-bold uppercase tracking-widest"><span>Featured build</span><Building2 size={19}/></div>
                     <div className="absolute bottom-6 z-10"><p className="font-mono text-xs text-amber-300">01 / URBAN INFRASTRUCTURE</p><h2 className="mt-2 font-display text-3xl font-bold text-white">Cities in motion</h2></div>
                   </div>
-                  <div className="mt-4 flex items-center justify-between px-2 text-sm text-slate-300"><span className="flex items-center gap-2"><MapPin size={16} className="text-amber-400"/> Bangalore, India</span><HardHat size={18} className="text-amber-400"/></div>
+                  <div className="mt-4 flex items-center justify-between px-2 text-sm text-slate-300"><span className="flex items-center gap-2"><MapPin size={16} className="text-amber-400"/> Susta-04, Nepal</span><HardHat size={18} className="text-amber-400"/></div>
                 </div>
               </div>
             </div>
