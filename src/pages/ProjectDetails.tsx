@@ -27,8 +27,8 @@ type Project = {
   title: string;
   location: string;
   status: string;
-  description: string | null;
-  image: string | null;
+  description?: string | null;
+  image?: string | null;
   created_at: string;
 };
 
