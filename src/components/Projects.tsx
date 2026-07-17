@@ -1,37 +1,70 @@
-﻿import type { project as Project } from "@/types/project";
+﻿import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { supabase } from "@/lib/supabase";
 
-const PROJECT_IMAGES: Record<string, string> = {
-  "Smart City Development": "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80",
-  "Highway Expansion": "https://images.unsplash.com/photo-1517089596392-fb9a9033e05b?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "Commercial Complex": "https://images.unsplash.com/photo-1574484284002-952d92456975?w=800&q=80",
+type Project = {
+  id: number;
+  title: string;
+  location: string;
+  status: string;
+  image: string | null;
+  description: string | null;
 };
 
 const FALLBACK_IMG = "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80";
 
+const ProjectCard = ({ project }: { project: Project }) => {
+  const [imgError, setImgError] = useState(false);
+  return (
+    <div className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+      <div className="h-48 overflow-hidden">
+        {project.image && !imgError ? (
+          <img
+            src={project.image}
+            alt={project.title}
+            className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
+            onError={() => setImgError(true)}
+          />
+        ) : (
+          <img
+            src={FALLBACK_IMG}
+            alt={project.title}
+            className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
+          />
+        )}
+      </div>
+      <div className="p-7">
+        <h3 className="font-display text-xl font-bold">
+          {project.title}
+        </h3>
+        <p className="mt-3 text-slate-600">
+          {project.location} - {project.status}
+        </p>
+        <Link
+          to={`/projects/${project.id}`}
+          className="mt-5 block text-sm font-bold text-amber-700"
+        >
+          Learn More →
+        </Link>
+      </div>
+    </div>
+  );
+};
+
 const Projects = () => {
-  const projects: Project[] = [
-    {
-      id: 1,
-      title: "Smart City Development",
-      location: "Triveni",
-      status: "Ongoing",
-      image: PROJECT_IMAGES["Smart City Development"],
-    },
-    {
-      id: 2,
-      title: "Highway Expansion",
-      location: "Susta",
-      status: "Completed",
-      image: PROJECT_IMAGES["Highway Expansion"],
-    },
-    {
-      id: 3,
-      title: "Commercial Complex",
-      location: "Belatari",
-      status: "Planning",
-      image: PROJECT_IMAGES["Commercial Complex"],
-    },
-  ];
+  const [projects, setProjects] = useState<Project[]>([]);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const { data } = await supabase
+        .from("projects")
+        .select("*")
+        .order("created_at", { ascending: false })
+        .limit(3);
+      if (data) setProjects(data as Project[]);
+    };
+    fetchProjects();
+  }, []);
 
   return (
     <section className="bg-stone-50 py-24">
@@ -52,37 +85,13 @@ const Projects = () => {
         </div>
 
         <div className="mt-14 grid gap-5 md:grid-cols-3">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
-            >
-              <div className="h-48 overflow-hidden">
-                <img
-                  src={project.image || FALLBACK_IMG}
-                  alt={project.title}
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
-                />
-              </div>
-
-              <div className="p-7">
-                <h3 className="font-display text-xl font-bold">
-                  {project.title}
-                </h3>
-
-                <p className="mt-3 text-slate-600">
-                  {project.location} - {project.status}
-                </p>
-
-                <button className="mt-5 text-sm font-bold text-amber-700">
-                  Learn More →
-                </button>
-              </div>
-            </div>
+          {projects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
           ))}
         </div>
 
       </div>
+
     </section>
   );
 };
