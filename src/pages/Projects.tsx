@@ -38,7 +38,7 @@ const Projects = () => {
       </h1>
 
       <p className="mt-4 text-gray-600">
-        Discover ongoing and completed projects.
+        Discover ongoing and completed project.
       </p>
 
       <input
