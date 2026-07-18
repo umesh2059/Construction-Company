@@ -36,7 +36,7 @@
             </h3>
 
             <p className="leading-7 text-slate-600">
-              Apply for internships and gain real-world experience.
+              Apply for internships and gain real-world experiences.
             </p>
           </div>
 

@@ -26,7 +26,7 @@ const Careers = () => {
       <h1 className="text-5xl font-bold">Career Opportunities</h1>
 
       <p className="text-gray-600 mt-4">
-        Explore internships and job opportunities in the construction industry.
+        Explore internships and job opportunities in the constructions industry.
       </p>
 
       <input
