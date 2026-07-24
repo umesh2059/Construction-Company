@@ -15,6 +15,7 @@ const Navbar =()=>{
 
                 <ul className="hidden gap-7 text-sm font-bold text-slate-600 md:flex">
                     <li><Link className="transition hover:text-amber-700" to="/">Home</Link></li>
+                    <li><Link className="transition hover:text-amber-700" to="/about">About</Link></li>
                     <li><Link className="transition hover:text-amber-700" to="/projects">Projects</Link></li>
                     <li><Link className="transition hover:text-amber-700" to="/events">Events</Link></li>
                     <li><Link className="transition hover:text-amber-700" to="/careers">Careers</Link></li>
@@ -31,6 +32,7 @@ const Navbar =()=>{
                 <div className="border-t border-slate-200 px-6 py-5 md:hidden">
                     <ul className = "flex flex-col gap-4 font-semibold text-slate-700">
                         <li><Link onClick={() => setOpen(false)} to = "/">Home</Link></li>
+                        <li><Link onClick={() => setOpen(false)} to = "/about">About</Link></li>
                         <li><Link onClick={() => setOpen(false)} to = "/projects">Projects</Link></li>
                         <li><Link onClick={() => setOpen(false)} to = "/events">Events</Link></li>
                         <li><Link onClick={() => setOpen(false)} to="/careers">Careers</Link></li>

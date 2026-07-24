@@ -8,6 +8,7 @@ import Events from "@/pages/Events";
 import Career from "@/pages/Career";
 import Internship from "@/pages/Internship";
 import Contact from "@/pages/Contact";
+import About from "@/pages/About";
 import ProjectDetails from "@/pages/ProjectDetails";
 import CareerDetails from "@/pages/careerDetails";
 import Apply from "@/pages/Apply";
@@ -29,6 +30,7 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/events" element={<Events />} />
         <Route path="/events/:id/register" element={<EventRegistration />} />
