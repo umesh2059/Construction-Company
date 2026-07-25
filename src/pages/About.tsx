@@ -1,4 +1,4 @@
-import { Building2, Calendar, Users, HardHat, Award, ChevronRight } from "lucide-react";
+import { Calendar, Users, HardHat, Award, ChevronRight } from "lucide-react";
 
 const founders = [
   {
