@@ -41,8 +41,8 @@ const milestones = [
 
 const stats = [
   { label: "Years Established", value: "20+", icon: Calendar },
-  { label: "Projects Completed", value: "500+", icon: HardHat },
-  { label: "Team Members", value: "200+", icon: Users },
+  { label: "Projects Completed", value: "150+", icon: HardHat },
+  { label: "Team Members", value: "100+", icon: Users },
   { label: "Industry Awards", value: "25+", icon: Award },
 ];
 
@@ -99,8 +99,8 @@ const About = () => {
               From a Small Office to a Trusted Name in Construction
             </h2>
             <p className="mt-5 leading-7 text-slate-600">
-              Susta Engineering Company was founded in 2025 by chanda kumari panjiyar with a small team of 4 engineers
-              working out of a modest office in Pune. What started as a local contracting firm soon grew into
+              Susta Engineering Company was founded in 2024 by Chanda kumari panjiyar with a small team of 4 engineers
+              working out of a modest office in Susta. What started as a local contracting firm soon grew into
               a full-service construction and engineering company known for quality, timely delivery, and
               ethical business practices.
             </p>
@@ -232,7 +232,7 @@ const About = () => {
             Want to Be Part of Our Story?
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-slate-300">
-            Join the team at Susta Engineering Company and help us build the future of India's infrastructure.
+            Join the team at Susta Engineering Company and help us build the future of Nepal's infrastructure.
           </p>
           <a
             href="/careers"
