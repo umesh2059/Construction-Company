@@ -8,7 +8,7 @@ const founders = [
     bio: "With over 8 years of experience in civil engineering and construction management, chanda kumari panjiyar founded Susta Engineering in 2024 with a vision to revolutionize sustainable construction practices in Nepal.",
   },
   {
-    name: "Ramashankar Gupta",
+    name: "Umesh Gupta",
     role: "Co-Founder & COO",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80",
     bio: "Ramashankar Gupta brings 5+ years of expertise in project management and business operations. He spearheads our operational excellence and has been instrumental in scaling the company across multiple states.",
@@ -16,10 +16,10 @@ const founders = [
 ];
 
 const teamMembers = [
-  "Amit Verma",
-  "Sneha Patel",
-  "Vikram Singh",
-  "Anjali Desai",
+  "laxman pant",
+  "Bivek Gharti",
+  "Avishek Jaiswal",
+  "Brihatbir Thapa",
   "Rohit Joshi",
   "Neha Kapoor",
   "Suresh Reddy",
@@ -40,8 +40,8 @@ const milestones = [
 ];
 
 const stats = [
-  { label: "Years Established", value: "20+", icon: Calendar },
-  { label: "Projects Completed", value: "150+", icon: HardHat },
+  { label: "Years Established", value: "10+", icon: Calendar },
+  { label: "Projects Completed", value: "100+", icon: HardHat },
   { label: "Team Members", value: "100+", icon: Users },
   { label: "Industry Awards", value: "25+", icon: Award },
 ];
@@ -64,7 +64,7 @@ const About = () => {
             Susta Engineering Company
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-slate-300">
-            Building Nepal's infrastructure with integrity, innovation, and sustainability since 2024.
+            Building Nepal's infrastructure with integrity, innovation, and sustainability since 2020.
           </p>
         </div>
       </div>
@@ -86,6 +86,7 @@ const About = () => {
             ))}
           </div>
         </div>
+        
       </div>
 
       {/* Our Story */}
@@ -99,7 +100,7 @@ const About = () => {
               From a Small Office to a Trusted Name in Construction
             </h2>
             <p className="mt-5 leading-7 text-slate-600">
-              Susta Engineering Company was founded in 2024 by Chanda kumari panjiyar with a small team of 4 engineers
+              Susta Engineering Company was founded in 2020 by Chanda kumari panjiyar with a small team of 4 engineers
               working out of a modest office in Susta. What started as a local contracting firm soon grew into
               a full-service construction and engineering company known for quality, timely delivery, and
               ethical business practices.

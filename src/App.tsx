@@ -20,7 +20,6 @@ import CreateProject from "@/Admin/CreateProject";
 import ManageImages from "@/Admin/ManageImages";
 import Applications from "@/Admin/Application";
 import EventRegistrations from "@/Admin/EventRegistrations";
-import Login from "@/Auth/Login";
 import ProtectedRoute from "@/Auth/protectedRoute";
 import AdminLayout from "@/Admin/AdminLayout";
 
@@ -40,7 +39,6 @@ const App = () => {
         <Route path="/projects/:id" element={<ProjectDetails />} />
         <Route path="/careers/:id" element={<CareerDetails />} />
         <Route path="/apply/:id" element={<Apply />} />
-        <Route path="/login" element={<Login />} />
         <Route
           path="/admin"
           element={

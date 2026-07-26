@@ -18,7 +18,7 @@ create policy "Anyone can view site_images"
     using (true);
 
 create policy "Authenticated users can manage site_images"
-    on public site_images for all
+    on public.site_images for all
     to authenticated
     using (true)
     with check (true);

@@ -71,7 +71,7 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Call Us",
-      details: "+1 (555) 123-4567\n+1 (555) 987-6543",
+      details: "+977 9766636810\n+1 977-9841529018",
     },
   ];
 
