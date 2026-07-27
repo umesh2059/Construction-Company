@@ -1,17 +1,30 @@
-import { Calendar, Users, HardHat, Award, ChevronRight } from "lucide-react";
+import { useState } from "react";
+import { Calendar, Users, HardHat, Award, ChevronRight, X, Mail, GraduationCap, Briefcase, MapPin } from "lucide-react";
 
 const founders = [
   {
-    name: "chanda kumari panjiyar",
+    name: "Chanda Kumari Panjiyar",
     role: "Founder & CEO",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
-    bio: "With over 8 years of experience in civil engineering and construction management, chanda kumari panjiyar founded Susta Engineering in 2024 with a vision to revolutionize sustainable construction practices in Nepal.",
+    image: "/chandaaunty.jpg",
+    bio: "With over 8 years of experience in civil engineering and construction management, Chanda Kumari Panjiyar founded Susta Engineering in 2024 with a vision to revolutionize sustainable construction practices in Nepal.",
+    fullBio: "Chanda Kumari Panjiyar is the visionary founder and CEO of Susta Engineering Company. With a degree in Civil Engineering and over a decade of hands-on experience in the construction industry, she recognized the need for sustainable, quality-driven infrastructure development in Nepal. Under her leadership, Susta Engineering has grown from a small team of 4 to a thriving organization of 150+ professionals. She is passionate about empowering women in construction and promoting eco-friendly building practices across the country.",
+    education: "B.E. in Civil Engineering, Tribhuvan University",
+    experience: "10+ years in civil engineering & construction management",
+    location: "Susta, Nawalparasi",
+    email: "chanda@sustaengineering.com",
+    expertise: ["Sustainable Construction", "Project Management", "Structural Design", "Team Leadership"],
   },
   {
-    name: "Umesh Gupta",
+    name: "KeshKumar Gupta",
     role: "Co-Founder & COO",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80",
-    bio: "Ramashankar Gupta brings 5+ years of expertise in project management and business operations. He spearheads our operational excellence and has been instrumental in scaling the company across multiple states.",
+    image: "/keshavdai.png",
+    bio: "KeshKumar Gupta brings 5+ years of expertise in project management and business operations. He spearheads our operational excellence and has been instrumental in scaling the company across multiple states.",
+    fullBio: "KeshKumar Gupta is the Co-Founder and Chief Operating Officer of Susta Engineering Company. With a strong background in business administration and project management, he oversees the day-to-day operations, strategic planning, and business development. His relentless focus on operational efficiency and client satisfaction has been key to the company's rapid growth. KeshKumar is known for his ability to build high-performing teams and foster a culture of innovation and accountability.",
+    education: "MBA in Operations, Pokhara University",
+    experience: "5+ years in project management & business operations",
+    location: "Susta, Nawalparasi",
+    email: "keshkumar@sustaengineering.com",
+    expertise: ["Business Operations", "Project Management", "Strategic Planning", "Team Building"],
   },
 ];
 
@@ -46,7 +59,14 @@ const stats = [
   { label: "Industry Awards", value: "25+", icon: Award },
 ];
 
+interface Founder {
+  name: string; role: string; image: string; bio: string; fullBio: string;
+  education: string; experience: string; location: string; email: string; expertise: string[];
+}
+
 const About = () => {
+  const [selectedFounder, setSelectedFounder] = useState<Founder | null>(null);
+
   return (
     <section className="min-h-screen bg-stone-50">
       {/* Hero */}
@@ -140,18 +160,22 @@ const About = () => {
             {founders.map((founder) => (
               <div
                 key={founder.name}
-                className="group rounded-2xl border border-slate-200 bg-stone-50 p-8 transition duration-300 hover:-translate-y-1 hover:border-amber-300 hover:shadow-xl"
+                onClick={() => setSelectedFounder(founder)}
+                className="group cursor-pointer rounded-2xl border border-slate-200 bg-stone-50 p-8 transition duration-300 hover:-translate-y-1 hover:border-amber-300 hover:shadow-xl"
               >
-                <div className="flex flex-col items-center text-center sm:flex-row sm:text-left sm:items-start sm:gap-6">
+                <div className="flex flex-col items-center text-center sm:flex-row sm:text-left sm:items-center sm:gap-8">
                   <img
                     src={founder.image}
                     alt={founder.name}
-                    className="h-28 w-28 shrink-0 rounded-full border-4 border-amber-200 object-cover"
+                    className="h-32 w-32 shrink-0 rounded-full border-4 border-amber-200 object-cover transition duration-300 group-hover:scale-105 group-hover:border-amber-400 sm:h-36 sm:w-36 md:h-40 md:w-40"
                   />
-                  <div className="mt-4 sm:mt-0">
-                    <h3 className="font-display text-xl font-bold text-slate-950">{founder.name}</h3>
+                  <div className="mt-4 sm:mt-0 sm:flex-1">
+                    <h3 className="font-display text-xl font-bold text-slate-950 md:text-2xl">{founder.name}</h3>
                     <p className="text-sm font-semibold text-amber-700">{founder.role}</p>
-                    <p className="mt-3 leading-7 text-slate-600">{founder.bio}</p>
+                    <p className="mt-3 leading-7 text-slate-600 line-clamp-3">{founder.bio}</p>
+                    <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-amber-600 transition group-hover:text-amber-700">
+                      View Full Profile <ChevronRight size={16} />
+                    </span>
                   </div>
                 </div>
               </div>
@@ -159,6 +183,84 @@ const About = () => {
           </div>
         </div>
       </div>
+
+      {/* Founder Modal */}
+      {selectedFounder && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
+          onClick={() => setSelectedFounder(null)}
+        >
+          <div
+            className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl sm:p-8 md:p-10"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setSelectedFounder(null)}
+              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-stone-100 text-slate-500 transition hover:bg-stone-200 hover:text-slate-800"
+            >
+              <X size={20} />
+            </button>
+
+            <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start sm:gap-8">
+              <img
+                src={selectedFounder.image}
+                alt={selectedFounder.name}
+                className="h-40 w-40 shrink-0 rounded-full border-4 border-amber-200 object-cover sm:h-48 sm:w-48 md:h-56 md:w-56"
+              />
+              <div className="text-center sm:text-left">
+                <h3 className="font-display text-2xl font-bold text-slate-950 md:text-3xl">{selectedFounder.name}</h3>
+                <p className="text-base font-semibold text-amber-700">{selectedFounder.role}</p>
+                <p className="mt-4 leading-7 text-slate-600">{selectedFounder.fullBio}</p>
+              </div>
+            </div>
+
+            <div className="mt-8 grid gap-4 border-t border-slate-200 pt-8 sm:grid-cols-2">
+              <div className="flex items-center gap-3 rounded-xl bg-stone-50 p-4">
+                <GraduationCap size={20} className="shrink-0 text-amber-600" />
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Education</p>
+                  <p className="text-sm font-medium text-slate-800">{selectedFounder.education}</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 rounded-xl bg-stone-50 p-4">
+                <Briefcase size={20} className="shrink-0 text-amber-600" />
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Experience</p>
+                  <p className="text-sm font-medium text-slate-800">{selectedFounder.experience}</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 rounded-xl bg-stone-50 p-4">
+                <MapPin size={20} className="shrink-0 text-amber-600" />
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Location</p>
+                  <p className="text-sm font-medium text-slate-800">{selectedFounder.location}</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 rounded-xl bg-stone-50 p-4">
+                <Mail size={20} className="shrink-0 text-amber-600" />
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Email</p>
+                  <p className="text-sm font-medium text-slate-800">{selectedFounder.email}</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 border-t border-slate-200 pt-6">
+              <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Areas of Expertise</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {selectedFounder.expertise.map((skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-full bg-amber-100 px-4 py-1.5 text-sm font-medium text-amber-800"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Team */}
       <div className="py-24">
